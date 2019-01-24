@@ -5,7 +5,11 @@ import reducer from '../reducers'
 
 const logger = createLogger()
 
-export const store = createStore(
+const store = createStore(
     reducer,
     applyMiddleware(thunk, logger)
 )
+
+window.store = store
+
+export default store

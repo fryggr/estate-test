@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadAllCards } from './ac'
+import { loadAllCards } from '../ac'
 
 class HomePage extends Component {
 
@@ -26,8 +26,9 @@ class HomePage extends Component {
 
 
 
-function mapDispatchToProps(dispatch) {
-  return {loadAllCards}
-}
+const mapDispatchToProps = dispatch => {
+    return {
+        loadAllCards: (cards) => {dispatch(loadAllCards(cards))}
+}}
 
 export default connect(null, mapDispatchToProps)(HomePage)
