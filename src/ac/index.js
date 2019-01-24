@@ -1,38 +1,36 @@
 import axios from 'axios';
 
 export function loadAllCards() {
-    console.log('dispatch');
 
     return dispatch => {
-        dispatch({
-            type: 'LOAD_CARDS_STARTED'
-        })
+        dispatch(loadCardsStarted())
 
         axios.get('https://api.jqestate.ru/v1/properties/country')
            .then(response =>{
-               console.log(response.data);
                setTimeout(() => {
                    dispatch(loadCardsSuccess(response.data));
-                   // dispatch({
-                   //    type: 'LOAD_CARDS_SUCCESS',
-                   //    payload: response.data
-                   //  })
+                   // throw new Error('NOT!');
                 }, 2500);
            })
            .catch(error => {
-                console.log(error);
-                dispatch({
-                  type: 'LOAD_CARDS_FAILURE',
-                  payload: error
-                })
+                dispatch(loadCardsFailure(error));
           })
 
     }
 }
+
+const loadCardsStarted = () => ({
+  type: 'LOAD_CARDS_STARTED'
+});
 
 const loadCardsSuccess = cards => ({
   type: 'LOAD_CARDS_SUCCESS',
   payload: {
     ...cards
   }
+});
+
+const loadCardsFailure = error => ({
+  type: 'LOAD_CARDS_FAILURE',
+  payload: error
 });
