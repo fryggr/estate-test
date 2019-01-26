@@ -17,7 +17,8 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: null,
-                cards: [...state.cards, payload]
+                cards: action.payload.cards,
+                pagination: action.payload.pagination
             }
         case 'LOAD_CARDS_FAILURE':
             return {

@@ -13,7 +13,7 @@ class HomePage extends Component {
         const body = cards.length ? (
             <CardList cards = { cards } />
             ) : (
-                <h3>No cards yet</h3>
+                <h3>Нет объектов</h3>
             )
         return (<div>
             <h1>Элитная недвижимость в Подмосковье</h1>
@@ -27,7 +27,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-    return state
+    const { cards, pagination } = state;
+    return {cards, pagination }
 }
 
 const mapDispatchToProps = dispatch => {
