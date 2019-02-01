@@ -3,7 +3,6 @@ import Card from '../Card'
 
 class CardList extends Component {
     render() {
-        console.log(this.props.cards[0]);
         return this.props.cards.map(item => {
             return <Card card = {item} />
         })

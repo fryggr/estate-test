@@ -14,12 +14,12 @@ class HomePage extends Component {
         this.props.loadAllCards(e)
     }
     render() {
-        const { loading, cards } = this.props
+        const { loading, cards, activeIndex, total, limit } = this.props
         const body = cards.length ? (
             <div>
                 <Pagination
-                    items={5}
-                    activePage={1}
+                    items={total % limit === 0 ? parseInt(total / limit) : parseInt(total / limit) + 1}
+                    activePage={activeIndex}
                     maxButtons={8}
                     onSelect={this.paginationSelect}
                 />
@@ -40,8 +40,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-    const { cards, pagination } = state;
-    return {cards, pagination }
+    const { cards, pagination, activeIndex, total, limit } = state;
+    return {cards, pagination, activeIndex, total, limit }
 }
 
 const mapDispatchToProps = dispatch => {
