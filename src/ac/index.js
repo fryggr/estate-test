@@ -1,9 +1,9 @@
-export function loadAllCards() {
+export function loadAllCards(e) {
 
     return dispatch => {
         dispatch(loadCardsStarted())
         try {
-            return fetch('https://api.jqestate.ru/v1/properties/country')
+            return fetch(`https://api.jqestate.ru/v1/properties/country?pagination[offset]=${e}`)
                 .then(response => response.json())
                 .then(res => {dispatch(loadCardsSuccess({cards:res.items, pagination: res.pagination})); })
         } catch (e) {
