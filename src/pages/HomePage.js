@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {loadAllCards} from '../ac'
 import CardList from '../components/CardList'
-import { Pagination } from 'react-materialize'
+import { Pagination, Row, Col, ProgressBar } from 'react-materialize'
 
 class HomePage extends Component {
 
@@ -23,16 +23,23 @@ class HomePage extends Component {
                     maxButtons={8}
                     onSelect={this.paginationSelect}
                 />
-                <CardList cards = { cards } />
+                <Row>
+                    <CardList cards = { cards } />
+                </Row>
             </div>
             ) : (
                 <h3>Нет объектов</h3>
             )
-        return (<div>
-            {/*<h1>Элитная недвижимость в Подмосковье</h1>*/}
+        return (<div className="container">
+            <h3>Элитная недвижимость в Подмосковье</h3>
             {
                 loading
-                    ? <p>Загрузка...</p>
+                    ?
+                        <Row>
+                          <Col s={12}>
+                            <ProgressBar />
+                          </Col>
+                        </Row>
                     : body
             }
         </div>)
@@ -40,8 +47,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-    const { cards, pagination, activeIndex, total, limit } = state;
-    return {cards, pagination, activeIndex, total, limit }
+    const { cards, pagination, activeIndex, total, limit, loading } = state;
+    return {cards, pagination, activeIndex, total, limit, loading }
 }
 
 const mapDispatchToProps = dispatch => {
