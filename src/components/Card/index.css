@@ -1,5 +1,6 @@
 .cards__image{
-    background: #b2dfdb;
+    background: #b2dfdb url('./img/house.jpg') center;
+    background-size: cover;
     width: 100%;
     height: 300px;
 }

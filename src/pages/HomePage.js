@@ -20,7 +20,7 @@ class HomePage extends Component {
                 <Pagination
                     items={total % limit === 0 ? parseInt(total / limit) : parseInt(total / limit) + 1}
                     activePage={activeIndex}
-                    maxButtons={8}
+                    maxButtons={5}
                     onSelect={this.paginationSelect}
                 />
                 <Row>
@@ -47,8 +47,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = state => {
-    const { cards, pagination, activeIndex, total, limit, loading } = state;
-    return {cards, pagination, activeIndex, total, limit, loading }
+    const { cards, activeIndex, total, limit, loading } = state;
+    return {cards, activeIndex, total, limit, loading }
 }
 
 const mapDispatchToProps = dispatch => {

@@ -6,15 +6,13 @@ export function loadAllCards(e) {
             return fetch(`https://api.jqestate.ru/v1/properties/country?pagination[offset]=${e}`)
                 .then(response => response.json())
                 .then(res => {
-                    setTimeout(() => {
-                        dispatch(loadCardsSuccess({
-                            cards:res.items,
-                            pagination: res.pagination,
-                            activeIndex: e,
-                            total: res.pagination.total,
-                            limit: res.pagination.limit
-                        }))
-                     }, 2500)
+                    dispatch(loadCardsSuccess({
+                        cards:res.items,
+                        pagination: res.pagination,
+                        activeIndex: e,
+                        total: res.pagination.total,
+                        limit: res.pagination.limit
+                    }))
                 })
         } catch (e) {
             dispatch(loadCardsFailure(e));

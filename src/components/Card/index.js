@@ -5,9 +5,8 @@ import './index.css'
 class Card extends Component {
     render() {
         const card = this.props.card;
-        console.log(card.specification.area);
         return (
-            <Col s={3}>
+            <Col s={12} m={6} l={3} xl={3}>
                 <div className="cards__item">
                     <div className="cards__image"></div>
                     <div className="cards__title grey-text text-darken-2">{card.location.settlementName}</div>
