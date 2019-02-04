@@ -1,0 +1,26 @@
+.cards__image{
+    background: #b2dfdb;
+    width: 100%;
+    height: 300px;
+}
+
+.cards__item{
+    margin-top: 20px;
+}
+
+.cards__title{
+    margin-top: 10px
+}
+
+.cards__price{
+    margin: 5px 0
+}
+
+.cards__area{
+    display: flex;
+}
+
+.cards__area .material-icons{
+    color: #bdbdbd;
+    margin-right: 5px;
+}
